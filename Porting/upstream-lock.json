@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "packages": [
+    {
+      "name": "@ai-sdk/google-vertex",
+      "reviewedVersion": "5.0.122",
+      "ledgerKind": "provider",
+      "evidence": "`AIProviders.googleVertex`, `GoogleVertexProvider`, `GoogleVertexProvider.swift`, `GoogleVertexModels.swift`, `GoogleVertexTests.swift`, `GoogleVertexMediaAndMaaSTests.swift`",
+      "reviewStatus": "imported-reviewed-with-gaps",
+      "archiveIntegrity": "sha512-E60GjL5AJekyAll3FN18e08opXuhp8IrOCihD9c1V49Z7+T9+KzZNDStobmCtndQTzXVbm/3HQEdDUj8Tb4rrA==",
+      "sourceRef": "npm:@ai-sdk/google-vertex@5.0.122",
+      "testRef": "682e2dd71456f14f9da33a1b983d1998c3a1184c",
+      "testRefRelationship": "inventory-snapshot-not-release-verified",
+      "contractFamilies": [],
+      "contractReview": "not-imported; inspect upstream declarations before extraction"
+    }
+  ]
+}
