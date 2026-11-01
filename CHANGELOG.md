@@ -1,6 +1,6 @@
 # Changelog
 
-## 1.0.0
+## 1.1.0
 
-- Extract the existing runtime, typed settings and standalone tests from the compatibility aggregate. Preserve the reviewed npm baseline and existing capability/gap boundaries.
-  Compatibility: Initial independent Swift package version. Existing SwiftAISDK entry points remain in the development compatibility facade; no npm-version equivalence is implied.
+- Express-mode apiKeyProvider evaluated per request with nonempty validation and abort boundary; preserve forced x-goog-api-key precedence. Forward Google video metadata using Vertex-specific namespace priority. Explicit hosted Anthropic native/strict defaults false while safe Sonnet5.5/Opus5.5/Fable5.1 schemas use shared forced-tool-incompatible override; Haiku retains JSON tool fallback. Native hosted MaaS/xAI/Anthropic bearer callback uses shared per-request credential resolution. Reviewed upstream: @ai-sdk/google-vertex 5.0.122 to 5.0.129. Validation passed: node Scripts/test-packages.mjs (all 52 owning package suites and the compatibility facade); node Scripts/sdk.mjs generate --check; node --test Scripts/tests/*.test.cjs (27 passed); docs-site check and build (100 pages). Live provider calls were not run.
+  Compatibility: Minor release for additive native API; existing static settings and call sites remain compatible. Updated direct dependency minimums are recorded in the manifest. Existing documented JS/framework and native product gaps remain; version-delta review does not imply full parity or live-service testing. Explicit custom authentication skips an unused credential supplier, a deliberate native callback-order adaptation.
