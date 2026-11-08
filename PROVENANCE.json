@@ -1,30 +1,30 @@
 {
   "schemaVersion": 1,
   "package": "swift-ai-google-vertex",
-  "version": "1.1.0",
-  "releaseID": "weekly-upstream-20261101",
+  "version": "1.2.0",
+  "releaseID": "weekly-upstream-20261108",
   "source": {
-    "commit": "ea057797494ab9bb66df8c6bfd8edc10245b20e7",
-    "baseCommit": "ea057797494ab9bb66df8c6bfd8edc10245b20e7",
+    "commit": "8e233ff96fb809445aff9a5c06bb6149a24b94da",
+    "baseCommit": "8e233ff96fb809445aff9a5c06bb6149a24b94da",
     "workingTree": false,
-    "inputsSHA256": "b46f3e07b0a583d6fee81035987d74a06fc5c6109cbdf228144d1172d2c3676e"
+    "inputsSHA256": "987359720075cb67dd8bc45bdc049aee4c5d5a42b67a7eb148e697ce5d18bd77"
   },
   "dependencies": [
     {
       "package": "swift-ai-core",
-      "from": "1.2.0"
+      "from": "1.3.0"
     },
     {
       "package": "swift-ai-google",
-      "from": "1.1.0"
-    },
-    {
-      "package": "swift-ai-anthropic",
       "from": "1.2.0"
     },
     {
+      "package": "swift-ai-anthropic",
+      "from": "1.3.0"
+    },
+    {
       "package": "swift-ai-openai-compatible",
-      "from": "1.1.0"
+      "from": "1.2.0"
     },
     {
       "package": "swift-ai-openai",
@@ -33,22 +33,22 @@
   ],
   "changes": [
     {
-      "id": "weekly-upstream-20261101",
-      "notes": "Express-mode apiKeyProvider evaluated per request with nonempty validation and abort boundary; preserve forced x-goog-api-key precedence. Forward Google video metadata using Vertex-specific namespace priority. Explicit hosted Anthropic native/strict defaults false while safe Sonnet5.5/Opus5.5/Fable5.1 schemas use shared forced-tool-incompatible override; Haiku retains JSON tool fallback. Native hosted MaaS/xAI/Anthropic bearer callback uses shared per-request credential resolution. Reviewed upstream: @ai-sdk/google-vertex 5.0.122 to 5.0.129. Validation passed: node Scripts/test-packages.mjs (all 52 owning package suites and the compatibility facade); node Scripts/sdk.mjs generate --check; node --test Scripts/tests/*.test.cjs (27 passed); docs-site check and build (100 pages). Live provider calls were not run.",
-      "compatibility": "Minor release for additive native API; existing static settings and call sites remain compatible. Updated direct dependency minimums are recorded in the manifest. Existing documented JS/framework and native product gaps remain; version-delta review does not imply full parity or live-service testing. Explicit custom authentication skips an unused credential supplier, a deliberate native callback-order adaptation."
+      "id": "weekly-upstream-20261108",
+      "notes": "Port opt-in Claude native structured outputs, correct Gemini transcription routing with full native unary/Live adapters and shared word timings; confirm catalog routing, credential origin policy and seed zero. Reviewed published upstream delta: @ai-sdk/google-vertex 5.0.129 to 5.0.134. Automatic Anthropic native output requires host opt-in and model support; explicit outputFormat and lossless fallback for forced-tool-rejecting models retain the shared policy override. Validation passed: node Scripts/test-packages.mjs (all 52 owning packages plus the complete local facade; 3,965 reported tests and 33 explicit live skips); node Scripts/sdk.mjs dev test; node Scripts/sdk.mjs generate --check; node --test Scripts/tests/*.test.cjs (27 passed); core/provider isolation and version resolution; 52 deterministic package exports, 106 catalog consumers and four additional exact retained-minimum graphs; docs-site install/check/build (100 pages); git diff --check. No paid live-service calls were run. The publication pipeline requires successful Swift 6.3.3 CI at the exact canonical source before publishing.",
+      "compatibility": "Minor release for additive native functionality under the project convention. Existing call sites and exact old selectors are retained. Direct minimums change only for concrete API use or required inherited behavior. Version-delta review does not establish full-package parity or live-service acceptance. Updated direct ranges: swift-ai-core 1.2.0 to 1.3.0, swift-ai-google 1.1.0 to 1.2.0, swift-ai-anthropic 1.2.0 to 1.3.0, swift-ai-openai-compatible 1.1.0 to 1.2.0."
     }
   ],
   "canonicalDirectory": "Packages/swift-ai-google-vertex",
   "upstream": [
     {
       "name": "@ai-sdk/google-vertex",
-      "reviewedVersion": "5.0.129",
+      "reviewedVersion": "5.0.134",
       "ledgerKind": "provider",
-      "evidence": "`AIProviders.googleVertex`, `GoogleVertexProvider`, `GoogleVertexProvider.swift`, `GoogleVertexModels.swift`, `GoogleVertexTests.swift`, `GoogleVertexMediaAndMaaSTests.swift`; 2026-11-01 delta: Docs/WeeklyUpstreamAudit20261101.json",
+      "evidence": "`AIProviders.googleVertex`, `GoogleVertexProvider`, `GoogleVertexProvider.swift`, `GoogleVertexModels.swift`, `GoogleVertexTests.swift`, `GoogleVertexMediaAndMaaSTests.swift`; 2026-11-01 delta: Docs/WeeklyUpstreamAudit20261101.json; 2026-11-08 delta: Docs/WeeklyUpstreamAudit20261108.json",
       "reviewStatus": "imported-reviewed-with-gaps",
-      "archiveIntegrity": "sha512-fWQeQsJVYzDF3Z5uNePlvrXd0Orm2D6m9kI9pV1rJUlVNJ0aSEtyKcui7SgWiLKnKDuhKAqyAFZZFGDj/W2/kQ==",
-      "sourceRef": "npm:@ai-sdk/google-vertex@5.0.129",
-      "testRef": "028a025398782f4938303f48fbeee45c79af544b",
+      "archiveIntegrity": "sha512-bbQl1s/iWFdoy/AsoaiyCFxsF6HqDZQAzgO3d7zBew/dlGvhH7IO2Ud6LrbRE1f7JxIWJIKX/LAevWUAKN6rdQ==",
+      "sourceRef": "npm:@ai-sdk/google-vertex@5.0.134",
+      "testRef": "0f3a85f92d1ce06ccde01d662407ef83e097a712",
       "testRefRelationship": "matching-release",
       "contractFamilies": [
         "EmbeddingModelV4",
@@ -56,9 +56,10 @@
         "LanguageModelV4",
         "ProviderV4",
         "SpeechModelV4",
-        "TranscriptionModelV4"
+        "TranscriptionModelV4",
+        "VideoModelV4"
       ],
-      "contractReview": "2026-11-01: published declarations, source and exact matching-release changed tests reviewed; scoped dispositions and Swift translations are in Docs/WeeklyUpstreamAudit20261101.json. Existing broader product gaps remain; reviewed delta is not full-package parity."
+      "contractReview": "2026-11-08: published declarations/source and exact matching-release changed tests reviewed; native implementations, per-file dispositions and broader retained gaps are recorded in Docs/WeeklyUpstreamAudit20261108.json. Reviewed delta is not full-package or live-service parity."
     }
   ],
   "note": "Independent port. Imported test refs and contract review gaps retain their original status; export is not new upstream parity proof.",
@@ -77,11 +78,11 @@
     },
     {
       "canonicalPath": "Packages/swift-ai-google-vertex/Porting/map.json",
-      "sha256": "13becf1077d99b31421cc1db78532a0ce14d8e76424711d2c98f247ecd0f0fbe"
+      "sha256": "6160abdf31c0f8617a5193c61747b8ad1449aaffbcdd560d85f962a91444d668"
     },
     {
       "canonicalPath": "Packages/swift-ai-google-vertex/README.md",
-      "sha256": "1ec0dc69dde0ebcff3a433255463463f61f164639d7cecbd30d3cc1650d7ff58"
+      "sha256": "2ad61c6efda7d5eec15f38be036fb352994669b07ed271ad20c6267380b55f9b"
     },
     {
       "canonicalPath": "Packages/swift-ai-google-vertex/Sources/SwiftAIGoogleVertex/GoogleVertexAnthropicTools.swift",
@@ -92,8 +93,12 @@
       "sha256": "23e0195cf5126c97efdd3d93e1eb275bcf450ea55cb8c02d35629b7c99a1db03"
     },
     {
+      "canonicalPath": "Packages/swift-ai-google-vertex/Sources/SwiftAIGoogleVertex/GoogleVertexGeminiTranscriptionModel.swift",
+      "sha256": "43b5c80368a89e5ec3e505ff7ddc1e4bc7af8f233f195d5795c95b8940bb9d7f"
+    },
+    {
       "canonicalPath": "Packages/swift-ai-google-vertex/Sources/SwiftAIGoogleVertex/GoogleVertexHostedProvider.swift",
-      "sha256": "b00854290af5f827ef53c7849a4dcf89ad1624256d20eda2a4104a6da44649d8"
+      "sha256": "e6b5b339e3d76cac01b0f870fc446543281bcc7d1ddeb3c1a2462afc629722ba"
     },
     {
       "canonicalPath": "Packages/swift-ai-google-vertex/Sources/SwiftAIGoogleVertex/GoogleVertexHostedRouting.swift",
@@ -101,15 +106,15 @@
     },
     {
       "canonicalPath": "Packages/swift-ai-google-vertex/Sources/SwiftAIGoogleVertex/GoogleVertexImageInputCapabilities.swift",
-      "sha256": "f33715b7e04f2c270b9221e3774716062f8a08c8c3c4582a8dda04f70b784758"
+      "sha256": "0d029ad7f583e3cb5a63f9298c804a0e1cbe04ea3d3089ba3ee8e134d698e451"
     },
     {
       "canonicalPath": "Packages/swift-ai-google-vertex/Sources/SwiftAIGoogleVertex/GoogleVertexModels.swift",
-      "sha256": "e819d457f004eda3ec578ac4a22e0ba53642c8aefd55196b893ea235e51850e2"
+      "sha256": "57e9b36de1ce8531be006c0a15733cf4fc54cb561d176475b0bfeb2159618540"
     },
     {
       "canonicalPath": "Packages/swift-ai-google-vertex/Sources/SwiftAIGoogleVertex/GoogleVertexProvider.swift",
-      "sha256": "714efcf94893f3d098b3b1a9da218f2ba232c64dfe1e57e035814433c3349c75"
+      "sha256": "40b2c45306e36448bd4fa06261884bd1ebadd268b0f6db8bd2679944fd4f93e6"
     },
     {
       "canonicalPath": "Packages/swift-ai-google-vertex/Tests/SwiftAIGoogleVertexTests/FixtureDownloadTransport.swift",
@@ -117,11 +122,11 @@
     },
     {
       "canonicalPath": "Packages/swift-ai-google-vertex/Tests/SwiftAIGoogleVertexTests/GoogleVertexChirpUpstreamTests.swift",
-      "sha256": "9b9a09f3515b89111f3244cb9a6be933737a7716932c35cfc5918a203b6b8136"
+      "sha256": "2fa0f3311e449d9f0c097bca83a43f0d0251d170e6ead6e6e05bc70704b57a18"
     },
     {
       "canonicalPath": "Packages/swift-ai-google-vertex/Tests/SwiftAIGoogleVertexTests/GoogleVertexMediaAndMaaSTests.swift",
-      "sha256": "c572b72134b35c43540c5956c7ac2f21c8184e81d1ff88c44e852bb8d03f92e0"
+      "sha256": "2ae481ad76dffc34623367a1056b4635a03a28d09793ff16c32e801c00440d1a"
     },
     {
       "canonicalPath": "Packages/swift-ai-google-vertex/Tests/SwiftAIGoogleVertexTests/TestSupport.swift",
@@ -130,6 +135,14 @@
     {
       "canonicalPath": "Packages/swift-ai-google-vertex/Tests/SwiftAIGoogleVertexTests/Weekly20261101VertexTests.swift",
       "sha256": "a55e24512c9782cb35443d80fe96dddbf3929444cdebb1954f51cd272abff249"
+    },
+    {
+      "canonicalPath": "Packages/swift-ai-google-vertex/Tests/SwiftAIGoogleVertexTests/Weekly20261108VertexOutputPolicyTests.swift",
+      "sha256": "c7da449dd81a195f455cf1c23184024fabfb739c9dda821682e6222de893584c"
+    },
+    {
+      "canonicalPath": "Packages/swift-ai-google-vertex/Tests/SwiftAIGoogleVertexTests/Weekly20261108VertexTests.swift",
+      "sha256": "d562fbb7126f504f7180ecaa24513435b3a96ed0188a6f46697ec01ccc9706c8"
     }
   ]
 }
