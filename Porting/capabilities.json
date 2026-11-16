@@ -2,6 +2,7 @@
   {
     "order": 25,
     "providerID": "google.vertex",
+    "displayName": "Google Vertex AI",
     "upstreamPackage": "@ai-sdk/google-vertex",
     "factoryNames": [
       "AIProviders.googleVertex"
@@ -16,11 +17,46 @@
     ],
     "files": false,
     "skills": false,
-    "notes": "Vertex's implemented Gemini language, tuned endpoint, embedding, Gemini TTS speech, Cloud Speech-to-Text transcription, Veo video, and Interactions surface was audited against upstream Google Vertex 5.0.141. The native embedding limits remain: 250 inputs for standard models and one input for Gemini multimodal embeddings. Imagen image generation/editing factories remain locally available for source compatibility after their removal from the current upstream package. Shared Gemini request behavior includes local JSON Schema `$ref` expansion with boolean-schema references, the Gemini 3.7 Flash `low` thinking floor, forward-compatible future-model capabilities, and response IDs; standard Vertex function-call and function-response IDs are omitted while server-tool IDs remain intact. Video supports first/last frame images, reference images, and top-level generateAudio precedence. Speech routes `chirp*` model IDs to authenticated Cloud TTS `text:synthesize` with Chirp voice/language defaults, LINEAR16/WAV handling, speed mapping, warnings, and metadata; other IDs keep Gemini TTS generateContent with WAV-wrapped PCM by default, raw PCM opt-in, multi-speaker provider options, sample-rate metadata, and upstream warnings. Vertex Batch and remaining broader shared Google language/safety/usage/request gaps retain their documented scope. Native Vertex Gemini unary and Live transcription are available. Node google-auth-library options, workflow serialization, ProviderV4 type names, and ESM-only packaging remain JS-runtime/package-surface concerns. The 5.0.76 pass adds an exact Maverick/Scout MaaS default of `max_tokens: 8192` without overwriting caller values and inherits the audited Google, Anthropic, and OpenAI-compatible shared behavior. The 2026-09-27 pass adds `gs://` tool-result media and the shared current TTS behavior. The 2026-10-04 pass validates generated location/Chirp region hosts, reports Gemini image capabilities, and retains speech usageMetadata; Vertex Gemini transcription was deferred at that snapshot and is implemented in the 2026-11-08 pass. The 2026-10-11 pass inherits JSON-with-tools conversion and shared embedding dimensions; native Gemini transcription was a gap at that snapshot and is implemented in the 2026-11-08 pass. The 2026-10-18 pass: Inherited GenerateContent continuation/usage/AUDIO/thinking and background Interactions behavior is current. Vertex Anthropic labels are covered by its separate adapter. The 2026-11-01 reviewed delta adds native per-request async credentials and current portable request/stream fixes where applicable; see WeeklyUpstreamAudit20261101 for exact package dispositions and retained gaps. The 2026-11-08 reviewed delta and retained gaps are documented in WeeklyUpstreamAudit20261108; no full-package or live-service parity is implied. The 2026-11-14 reviewed delta and retained gaps are documented in WeeklyUpstreamAudit20261114; no full-package or live-service parity is implied. The 2026-11-15 delta and native/platform distinctions are recorded in WeeklyUpstreamAudit20261115; no full-package or live-service parity is implied."
+    "credentials": [
+      {
+        "env": "GOOGLE_VERTEX_PROJECT",
+        "description": "Google Cloud project ID. Required for OAuth and service-account authentication unless baseURL is set."
+      },
+      {
+        "env": "GOOGLE_VERTEX_LOCATION",
+        "description": "Vertex location, such as us-central1 or global. Required for OAuth and service-account authentication unless baseURL is set."
+      },
+      {
+        "env": "GOOGLE_VERTEX_API_KEY",
+        "description": "Express Mode API key. Takes precedence over OAuth credentials; project and location are not needed."
+      },
+      {
+        "env": "GOOGLE_VERTEX_ACCESS_TOKEN",
+        "description": "OAuth access token sent as a bearer token."
+      },
+      {
+        "env": "GOOGLE_ACCESS_TOKEN",
+        "description": "Fallback for GOOGLE_VERTEX_ACCESS_TOKEN."
+      },
+      {
+        "env": "GOOGLE_CLIENT_EMAIL",
+        "description": "Service-account client email. Used with GOOGLE_PRIVATE_KEY when no API key or access token is set."
+      },
+      {
+        "env": "GOOGLE_PRIVATE_KEY",
+        "description": "Service-account PEM private key; literal \\n sequences are converted to newlines."
+      },
+      {
+        "env": "GOOGLE_PRIVATE_KEY_ID",
+        "description": "Optional service-account key ID added to the signed JWT."
+      }
+    ],
+    "notes": "Gemini language, embedding, image, speech, transcription and Veo video models on Google Cloud Vertex AI. Authenticate with an Express Mode API key, an OAuth access token, or a service account; OAuth and service accounts also need a project and location."
   },
   {
     "order": 26,
     "providerID": "googleVertex.maas",
+    "displayName": "Google Vertex AI — Model Garden (MaaS)",
     "upstreamPackage": "@ai-sdk/google-vertex",
     "factoryNames": [
       "AIProviders.googleVertexMaaS"
@@ -33,11 +69,30 @@
     ],
     "files": false,
     "skills": false,
-    "notes": "Vertex MaaS mirrors upstream 5.0.141 with OpenAI-compatible language, completion, embedding, and image factories. Maverick and Scout default `max_tokens` to 8192 while preserving an explicit caller value. The 2026-11-01 reviewed delta adds native per-request async credentials and current portable request/stream fixes where applicable; see WeeklyUpstreamAudit20261101 for exact package dispositions and retained gaps. The 2026-11-08 reviewed delta and retained gaps are documented in WeeklyUpstreamAudit20261108; no full-package or live-service parity is implied. The 2026-11-14 reviewed delta and retained gaps are documented in WeeklyUpstreamAudit20261114; no full-package or live-service parity is implied. The 2026-11-15 delta and native/platform distinctions are recorded in WeeklyUpstreamAudit20261115; no full-package or live-service parity is implied."
+    "credentials": [
+      {
+        "env": "GOOGLE_VERTEX_ACCESS_TOKEN",
+        "description": "OAuth access token sent as a bearer token. Required unless passed in settings."
+      },
+      {
+        "env": "GOOGLE_ACCESS_TOKEN",
+        "description": "Fallback for GOOGLE_VERTEX_ACCESS_TOKEN."
+      },
+      {
+        "env": "GOOGLE_VERTEX_PROJECT",
+        "description": "Google Cloud project ID. Required unless passed as project or baseURL is set."
+      },
+      {
+        "env": "GOOGLE_VERTEX_LOCATION",
+        "description": "Vertex location. Defaults to global."
+      }
+    ],
+    "notes": "Open models from Vertex AI Model Garden, such as Llama, through Vertex's OpenAI-compatible endpoint for chat, completion, embedding and image models. Authenticates with an OAuth access token."
   },
   {
     "order": 27,
     "providerID": "googleVertex.xai",
+    "displayName": "Google Vertex AI — xAI Grok",
     "upstreamPackage": "@ai-sdk/google-vertex",
     "factoryNames": [
       "AIProviders.googleVertexXAI"
@@ -47,11 +102,30 @@
     ],
     "files": false,
     "skills": false,
-    "notes": "Vertex xAI mirrors upstream Google Vertex 5.0.141 through the shared OpenAI-compatible request and response surface. The 2026-11-01 reviewed delta adds native per-request async credentials and current portable request/stream fixes where applicable; see WeeklyUpstreamAudit20261101 for exact package dispositions and retained gaps. The 2026-11-08 reviewed delta and retained gaps are documented in WeeklyUpstreamAudit20261108; no full-package or live-service parity is implied. The 2026-11-14 reviewed delta and retained gaps are documented in WeeklyUpstreamAudit20261114; no full-package or live-service parity is implied. The 2026-11-15 delta and native/platform distinctions are recorded in WeeklyUpstreamAudit20261115; no full-package or live-service parity is implied."
+    "credentials": [
+      {
+        "env": "GOOGLE_VERTEX_ACCESS_TOKEN",
+        "description": "OAuth access token sent as a bearer token. Required unless passed in settings."
+      },
+      {
+        "env": "GOOGLE_ACCESS_TOKEN",
+        "description": "Fallback for GOOGLE_VERTEX_ACCESS_TOKEN."
+      },
+      {
+        "env": "GOOGLE_VERTEX_PROJECT",
+        "description": "Google Cloud project ID. Required unless passed as project."
+      },
+      {
+        "env": "GOOGLE_VERTEX_LOCATION",
+        "description": "Vertex location. Defaults to global."
+      }
+    ],
+    "notes": "xAI Grok language models hosted on Vertex AI through its OpenAI-compatible Chat Completions endpoint. Authenticates with an OAuth access token; reasoning_effort is removed from requests."
   },
   {
     "order": 28,
     "providerID": "googleVertex.anthropic",
+    "displayName": "Google Vertex AI — Anthropic Claude",
     "upstreamPackage": "@ai-sdk/google-vertex",
     "factoryNames": [
       "AIProviders.googleVertexAnthropic"
@@ -61,6 +135,24 @@
     ],
     "files": false,
     "skills": false,
-    "notes": "Vertex Anthropic mirrors upstream Google Vertex 5.0.141 and inherits the shared Anthropic 4.0.99 model recognition, system options, thinking behavior, citations, and beta headers. The 2026-10-18 pass: Validated labels are UTF-8 JSON/base64 encoded into x-vertex-ai-labels after final request-header merging, with explicit caller header precedence. The 2026-11-01 reviewed delta adds native per-request async credentials and current portable request/stream fixes where applicable; see WeeklyUpstreamAudit20261101 for exact package dispositions and retained gaps. The 2026-11-08 reviewed delta and retained gaps are documented in WeeklyUpstreamAudit20261108; no full-package or live-service parity is implied. Automatic native structured output requires host opt-in and a supported Claude4.5+ model; strict tool inputs remain disabled. Explicit outputFormat and lossless fallback for forced-tool-rejecting models retain the shared policy override. The 2026-11-14 reviewed delta and retained gaps are documented in WeeklyUpstreamAudit20261114; no full-package or live-service parity is implied. The 2026-11-15 delta and native/platform distinctions are recorded in WeeklyUpstreamAudit20261115; no full-package or live-service parity is implied."
+    "credentials": [
+      {
+        "env": "GOOGLE_VERTEX_ACCESS_TOKEN",
+        "description": "OAuth access token sent as a bearer token. Required unless passed in settings."
+      },
+      {
+        "env": "GOOGLE_ACCESS_TOKEN",
+        "description": "Fallback for GOOGLE_VERTEX_ACCESS_TOKEN."
+      },
+      {
+        "env": "GOOGLE_VERTEX_PROJECT",
+        "description": "Google Cloud project ID. Required unless passed as project or baseURL is set."
+      },
+      {
+        "env": "GOOGLE_VERTEX_LOCATION",
+        "description": "Vertex location. Defaults to global."
+      }
+    ],
+    "notes": "Anthropic Claude models hosted on Vertex AI through rawPredict, with the shared Anthropic options, tools and thinking support. Authenticates with an OAuth access token and supports Vertex billing labels."
   }
 ]

@@ -1,6 +1,6 @@
 # Changelog
 
-## 1.2.2
+## 1.3.0
 
-- Align the versioned request identity with the reviewed published package while retaining native open String model IDs and existing request, response, option, error, stream and telemetry behavior. Derived TypeScript model-ID/catalog reorganizations preserve the existing native runtime policies. Reviewed npm delta: @ai-sdk/google-vertex 5.0.140 to 5.0.141. Validation passed: node Scripts/test-packages.mjs (55 owning packages, 2451 owning tests and 1736 compatibility tests), generation checks, 27 tooling tests, isolation/version checks, deterministic exports and minimum-dependency consumers. Documentation check/build passed (104 pages). Publication is gated by exact-source Swift 6.3.3 CI; subsequent public refs and clients are recorded in Docs/ReleaseVerification20261115.json. Paid/live-service checks were not run; this delta does not claim full-package parity.
-  Compatibility: Compatible versioned request identity correction; existing public selectors and dependency minimums remain. npm baselines and Swift SemVer are independent.
+- Gemini metadata is written under `googleVertex` and `vertex` instead of `google`, thought signatures are read from those keys first, `http(s)` and `gs://` URLs pass through, provider references throw and an explicit `baseURL` is kept for tuned endpoints. Vertex shares Google's request builder.
+  Compatibility: Applications reading Vertex Gemini metadata under `google` must read `googleVertex` (or `vertex`), as upstream. Otherwise source-compatible.

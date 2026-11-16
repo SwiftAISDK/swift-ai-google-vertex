@@ -57,6 +57,7 @@
       "Tests/SwiftAIGoogleVertexTests/GoogleVertexChirpUpstreamTests.swift",
       "Tests/SwiftAIGoogleVertexTests/GoogleVertexMediaAndMaaSTests.swift",
       "Tests/SwiftAIGoogleVertexTests/TestSupport.swift",
+      "Tests/SwiftAIGoogleVertexTests/UpstreamParityVertexTests.swift",
       "Tests/SwiftAIGoogleVertexTests/Weekly20261101VertexTests.swift",
       "Tests/SwiftAIGoogleVertexTests/Weekly20261108VertexOutputPolicyTests.swift",
       "Tests/SwiftAIGoogleVertexTests/Weekly20261108VertexTests.swift",
