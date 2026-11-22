@@ -1,6 +1,6 @@
 # Changelog
 
-## 1.3.0
+## 1.4.0
 
-- Gemini metadata is written under `googleVertex` and `vertex` instead of `google`, thought signatures are read from those keys first, `http(s)` and `gs://` URLs pass through, provider references throw and an explicit `baseURL` is kept for tuned endpoints. Vertex shares Google's request builder.
-  Compatibility: Applications reading Vertex Gemini metadata under `google` must read `googleVertex` (or `vertex`), as upstream. Otherwise source-compatible.
+- Add Gemini Live transcription VAD controls and correct single-turn completion. Re-export the Vertex Interactions MCP server tool with telemetry redaction. Reviewed npm: @ai-sdk/google-vertex 5.0.141 to 5.0.144. Offline validation passed: node Scripts/test-packages.mjs (56 packages, 3672 owning tests and 1760 compatibility tests), generation, tooling, isolation, and version selection. See Docs/Archive/WeeklyUpstreamAudit20261122.md for retained gaps. Paid provider calls were skipped.
+  Compatibility: Additive transcription options and tool API. Requires SwiftAIGoogle 1.5.0 for shared tool and telemetry behavior. Requires SwiftAIOpenAICompatible 1.4.0 for the public image model conformance introduced in Core 1.6.0.
